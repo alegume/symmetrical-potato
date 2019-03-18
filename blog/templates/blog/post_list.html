@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Post List</title>
+	</head>
+	<body>
+	<h1>Meus posts :)</h1>
+	<br />
+	{% for post in posts %}
+		<div style="margin-bottom: 30px;">
+			<p>Pub: {{ post.published_date }}</p>
+			<h2><a href="">{{ post.title }}</a></h2>
+			<p>{{ post.text|linebreaksbr }}</p>
+		</div>
+	{% endfor %}
+
+	</body>
+</html>
