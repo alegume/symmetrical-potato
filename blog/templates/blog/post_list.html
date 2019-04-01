@@ -3,11 +3,19 @@
 {% block titulo %} Posts recentes | {{ block.super }} {% endblock %}
 
 {% block conteudo %}
-	{% for post in posts %}
-		<div style="margin-bottom: 30px;">
-			<p>Pub: {{ post.published_date }}</p>
-			<h2><a href="">{{ post.title }}</a></h2>
-			<p>{{ post.text|linebreaksbr }}</p>
+		<div class="content container">
+			<div class="row">
+					<div class="col-md-8">
+							{% for post in posts %}
+									<div class="post">
+											<div class="date">
+													<p>published: {{ post.published_date }}</p>
+											</div>
+											<h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }} ({{post.pk}})</a></h2>
+											<p>{{ post.text|linebreaksbr }}</p>
+									</div>
+							{% endfor %}
+					</div>
+			</div>
 		</div>
-	{% endfor %}
 {% endblock %}
