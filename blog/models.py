@@ -15,4 +15,4 @@ class Post(models.Model):
 		self.save()
 
 	def __str__(self):
-		return '{} - {} ({})'.format(self.title, str(self.author), self.visits)
+		return '{} - {} ({}) -> {}'.format(self.title, str(self.author), self.visits, self.published_date)
