@@ -1,9 +1,8 @@
 # symmetrical-potato
 Mais um tutorial desenvolvido em sala de aula
 
-
-
-
+#
+#
 
 # Misc
 
