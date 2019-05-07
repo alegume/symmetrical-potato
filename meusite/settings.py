@@ -27,7 +27,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -85,7 +84,9 @@ WSGI_APPLICATION = 'meusite.wsgi.application'
 DATABASES = {'default': {'ENGINE': 'django.db.backends.mysql',
 	'NAME': 'myproject',
 	'USER': 'aluno',
+	# 'USER': 'aluno2',
 	'PASSWORD':'@aluno#321',
+	# 'PASSWORD':'@aluno#123',
 	'HOST': 'localhost',
 	'PORT': '',
 	}
@@ -135,3 +136,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # post_list é a minha home (sem / hardcode)
 LOGIN_REDIRECT_URL = 'post_list'
 LOGOUT_REDIRECT_URL = 'post_list'
+
+# email configs
+EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
