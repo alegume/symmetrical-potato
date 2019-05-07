@@ -30,14 +30,14 @@ ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
+	'django.contrib.admin',
+	'django.contrib.auth',
+	'django.contrib.contenttypes',
+	'django.contrib.sessions',
+	'django.contrib.messages',
+	'django.contrib.staticfiles',
 	'blog',
-	'accounts'
+	'accounts',
 ]
 
 MIDDLEWARE = [
@@ -83,10 +83,8 @@ WSGI_APPLICATION = 'meusite.wsgi.application'
 
 DATABASES = {'default': {'ENGINE': 'django.db.backends.mysql',
 	'NAME': 'myproject',
-	'USER': 'aluno',
-	# 'USER': 'aluno2',
-	'PASSWORD':'@aluno#321',
-	# 'PASSWORD':'@aluno#123',
+	'USER': 'aluno2',
+	'PASSWORD':'@aluno#123',
 	'HOST': 'localhost',
 	'PORT': '',
 	}
@@ -125,6 +123,8 @@ USE_L10N = True
 
 USE_TZ = True
 
+# Usuario customizado
+AUTH_USER_MODEL = 'accounts.CustomUser'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
