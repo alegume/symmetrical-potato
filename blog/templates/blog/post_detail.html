@@ -14,6 +14,15 @@
 				<a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
 				<a class="btn btn-default" href="{% url 'post_remove' pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
         <h2>{{ post.title }}</h2>
+				<br />
+				{% if post.attachment %}
+					<img src="{{ post.cover.url}}" alt="{{ post.title }}" />
+				{% endif %}
+				<br />
+				{% if post.attachment %}
+					<a href="{{ post.attachment.url}}" download>Anexo</a>
+				{% endif %}
+				<br />
         <p>{{ post.text|linebreaksbr }}</p>
     </div>
 {% endblock %}
