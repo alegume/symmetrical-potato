@@ -9,6 +9,8 @@ class Post(models.Model):
 	created_date = models.DateTimeField(default=timezone.now)
 	published_date = models.DateTimeField(blank=True, null=True)
 	visits = models.BigIntegerField(default=0)
+	cover = models.ImageField(upload_to='images/', blank=True, default=None)
+	attachment = models.FileField(upload_to='files/', blank=True, default=None)
 
 	def publish(self):
 		self.published_date = timezone.now()
