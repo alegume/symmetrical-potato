@@ -1,12 +1,14 @@
 {% extends 'skeleton.html' %}
 
+{% load crispy_forms_tags %}
+
 {% block titulo %}Entrar{% endblock %}
 
 {% block conteudo %}
   <h2>Entrar!</h2>
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">ENTRAR</button>
+    <!-- {{ form.as_p }} -->
+		{% crispy form %}
   </form>
 {% endblock %}
