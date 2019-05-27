@@ -24,5 +24,9 @@
 				{% endif %}
 				<br />
         <p>{{ post.text|linebreaksbr }}</p>
+				<p>
+						<a class="btn btn-default" href="{% url 'post_remove' pk=post.pk %}"><span class="glyphicon glyphicon-thumbs-up"></span></a>
+						<a class="btn btn-default" href="{% url 'post_remove' pk=post.pk %}"><span class="glyphicon glyphicon-thumbs-down"></span></a>
+				</p>
     </div>
 {% endblock %}
