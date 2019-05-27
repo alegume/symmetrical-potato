@@ -13,4 +13,5 @@ urlpatterns = [
 	path('post/<pk>/remove/', views.post_remove, name='post_remove'),
 	path('home/', TemplateView.as_view(template_name='blog/index.html')),
 	path('sobre/', TemplateView.as_view(template_name='blog/sobre.html')),
+	path('num_users/', views.num_users, name='num_users'),
 ]

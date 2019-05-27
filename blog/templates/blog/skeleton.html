@@ -11,6 +11,8 @@
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 		<link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
 		<link rel="stylesheet" href="{% static 'css/estilo.css' %}">
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+		<script src="{% static 'js/global.js' %}"></script>
 		{% block css %} {% endblock %}
 	</head>
 	<body>
@@ -29,6 +31,7 @@
 				<a href="{% url 'signup' %}" class="top-menu"><span class="glyphicon glyphicon-open"></span></a>
 			{% endif %}
 			<h1><a href="/">Django Girls Blog</a></h1>
+			<small>Quantidade de usuários: <strong><span id="num_users"></span></strong></small>
 		</div>
 	{% block conteudo %} {% endblock %}
 	</body>

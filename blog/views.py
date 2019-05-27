@@ -2,7 +2,9 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
+
+from accounts.models import CustomUser
 
 from .models import Post
 from .forms import PostForm
@@ -66,3 +68,7 @@ def post_remove(request, pk):
 	post = get_object_or_404(Post, pk=pk)
 	post.delete()
 	return redirect('post_list')
+
+def num_users(request):
+	num = CustomUser.objects.count()
+	return HttpResponse(num, content_type="text/html")
