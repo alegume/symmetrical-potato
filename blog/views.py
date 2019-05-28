@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 
 from accounts.models import CustomUser
 
-from .models import Post
+from .models import Post, Opinion
 from .forms import PostForm
 
 def post_list(request):
@@ -72,3 +72,37 @@ def post_remove(request, pk):
 def num_users(request):
 	num = CustomUser.objects.count()
 	return HttpResponse(num, content_type="text/html")
+
+def opinion_up(request, pk):
+	post = get_object_or_404(Post, pk=pk)
+	opinion, created = Opinion.objects.get_or_create(user=request.user)
+	opinion.value = 1
+	opinion.save()
+	post.opinion.add(opinion)
+	post.save()
+	return redirect('post_detail', pk=pk)
+
+def opinion_down(request, pk):
+	post = get_object_or_404(Post, pk=pk)
+	opinion, created = Opinion.objects.get_or_create(user=request.user)
+	opinion.value = -1
+	opinion.save()
+	post.opinion.add(opinion)
+	post.save()
+	return redirect('post_detail', pk=pk)
+
+def love(request, pk):
+	try:
+		post = Post.objects.get(pk=pk)
+		post.love += 1
+		post.save()
+		data = {
+			'loves': post.love,
+			'status': 1
+		}
+	except:
+		data = {
+			'status': 0
+		}
+
+	return JsonResponse(data)

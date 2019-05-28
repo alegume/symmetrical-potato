@@ -12,6 +12,7 @@ class Post(models.Model):
 	cover = models.ImageField(upload_to='images/', blank=True, default=None)
 	attachment = models.FileField(upload_to='files/', blank=True, default=None)
 	opinion = models.ManyToManyField('Opinion', related_name='posts', blank=True, default=None)
+	love = models.BigIntegerField(default=0)
 
 	def publish(self):
 		self.published_date = timezone.now()
@@ -21,5 +22,8 @@ class Post(models.Model):
 		return '{} - {} ({}) -> {}'.format(self.title, str(self.author), self.visits, self.published_date)
 
 class Opinion(models.Model):
-	value = models.IntegerField()
+	value = models.IntegerField(default=0)
 	user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+
+	def __str__(self):
+		return '{}@{}'.format(self.value, self.user)

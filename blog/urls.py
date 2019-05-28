@@ -14,4 +14,8 @@ urlpatterns = [
 	path('home/', TemplateView.as_view(template_name='blog/index.html')),
 	path('sobre/', TemplateView.as_view(template_name='blog/sobre.html')),
 	path('num_users/', views.num_users, name='num_users'),
+	# webservice
+	path('post/<pk>/opinion_up/', views.opinion_up, name='opinion_up'),
+	path('post/<pk>/opinion_down/', views.opinion_down, name='opinion_down'),
+	path('post/<pk>/love/', views.love, name='love'),
 ]
