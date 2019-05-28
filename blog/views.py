@@ -105,4 +105,6 @@ def love(request, pk):
 			'status': 0
 		}
 
+	## Pra converter uma lista simples
+	# return JsonResponse([1, 2, 3, 4], safe=False)
 	return JsonResponse(data)
