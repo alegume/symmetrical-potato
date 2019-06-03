@@ -18,4 +18,7 @@ urlpatterns = [
 	path('post/<pk>/opinion_up/', views.opinion_up, name='opinion_up'),
 	path('post/<pk>/opinion_down/', views.opinion_down, name='opinion_down'),
 	path('post/<pk>/love/', views.love, name='love'),
+	# contato
+	path('contato/', views.contato, name='contato'),
+	path('contato/obg', views.obg, name='obg'),
 ]

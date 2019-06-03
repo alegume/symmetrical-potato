@@ -2,12 +2,12 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, JsonResponse
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
-# from django.contrib.auth.models import User
+from django.core.mail import send_mail, BadHeaderError
 
 from accounts.models import CustomUser
 
 from .models import Post, Opinion
-from .forms import PostForm
+from .forms import PostForm, ContatoForm
 
 def post_list(request):
 	posts = Post.objects.filter(published_date__isnull=False).order_by('-created_date')
@@ -108,3 +108,23 @@ def love(request, pk):
 	## Pra converter uma lista simples
 	# return JsonResponse([1, 2, 3, 4], safe=False)
 	return JsonResponse(data)
+
+def contato(request):
+	if request.method == 'GET':
+		email_form = ContatoForm()
+	else:
+		email_form = ContatoForm(request.POST)
+		if email_form.is_valid():
+			emissor = email_form.cleaned_data['emissor']
+			assunto = email_form.cleaned_data['assunto']
+			msg = email_form.cleaned_data['msg']
+
+			try:
+				send_mail(assunto, msg, emissor, ['alexandreabreu@comp.ufla.br'])
+			except BadHeaderError:
+				return HttpResponse("Erro =/")
+			return redirect('obg')
+	return render(request, 'blog/contato.html', {'form': email_form})
+
+def obg(request):
+	return HttpResponse("<h2>Obrigado pela mensagem!!!</h2>")
