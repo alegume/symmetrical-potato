@@ -3,6 +3,7 @@ from django.http import HttpResponse, JsonResponse
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail, BadHeaderError
+from django.contrib import messages
 
 from accounts.models import CustomUser
 
@@ -33,6 +34,7 @@ def post_new(request):
 			post.author = request.user
 			post.published_date = None
 			post.save()
+		messages.success(request, 'Post criado com sucesso', extra_tags='alert')
 		return redirect('post_detail', pk=post.pk)
 	else:
 		form = PostForm()
@@ -47,7 +49,10 @@ def post_edit(request, pk):
 			post = form.save(commit=False)
 			post.author = request.user
 			post.save()
+			messages.success(request, 'Post editado com sucesso')
 			return redirect('post_detail', pk=post.pk)
+		else:
+			messages.warning(request, 'Problemas ao editar o Post')
 	else:
 		form = PostForm(instance=post)
 	return render(request, 'blog/post_edit.html', {'form': form})

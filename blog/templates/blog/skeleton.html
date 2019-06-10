@@ -33,6 +33,18 @@
 			<h1><a href="/">Django Girls Blog</a></h1>
 			<small>Quantidade de usuários: <strong><span id="num_users"></span></strong></small>
 		</div>
-	{% block conteudo %} {% endblock %}
+		<!-- Jeitim simprão de tudu ;P
+		{% if messages %}
+			<ul class="messages">
+				{% for message in messages %}
+					<li class="{{ message.tags }}">{{ message }}</li>
+				{% endfor %}
+			</ul>
+		{% endif %}
+	-->
+
+		{% include 'blog/messages.html' %}
+
+		{% block conteudo %} {% endblock %}
 	</body>
 </html>
