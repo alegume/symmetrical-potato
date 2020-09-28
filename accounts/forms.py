@@ -7,18 +7,16 @@ from crispy_forms.layout import Submit
 
 class CustomUserCreationForm(UserCreationForm):
 
-	class Meta(UserCreationForm):
-		model = CustomUser
-		fields = ('username', 'email', 'photo' )
+    class Meta(UserCreationForm):
+        model = CustomUser
+        fields = ('username', 'email', 'photo' )
 
-	def __init__(self, *args, **kwargs):
-		super(CustomUserCreationForm, self).__init__(*args, **kwargs)
-		self.helper = FormHelper(self)
-		self.helper.form_method = 'post'
-		self.helper.add_input(Submit('submit', 'Criar'))
+    helper = FormHelper()
+    helper.form_method = 'POST'
+    helper.add_input(Submit('submit', 'Criar'))
 
 class CustomUserChangeForm(UserChangeForm):
 
-	class Meta:
-		model = CustomUser
-		fields = ('username', 'email', 'photo' )
+    class Meta:
+        model = CustomUser
+        fields = ('username', 'email', 'photo' )

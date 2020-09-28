@@ -1,10 +1,8 @@
 {% extends 'blog/skeleton.html' %}
 
+{% load crispy_forms_tags %}
+
 {% block conteudo %}
-	<h2>Novo post</h2>
-	<form method="POST" class="post-form" enctype="multipart/form-data">
-		{% csrf_token %}
-		{{ form.as_p }}
-		<button type="submit" class="save btn btn-default">Savar</button>
-	</form>
+  <h2>Novo post</h2>
+  {% crispy form %}
 {% endblock %}
