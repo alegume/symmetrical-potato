@@ -5,3 +5,4 @@ Pillow
 pkg-resources
 pytz
 sqlparse
+djangorestframework
