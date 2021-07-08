@@ -26,10 +26,7 @@ urlpatterns = [
     # contato
     path('contato/', views.contato, name='contato'),
     path('contato/obg', views.obg, name='obg'),
-    # # Rest
-    # path('resti/', include(router.urls)),
-    # path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-
+    # Rest
     path('rest/posts/', views.rest_post_list, name='rest_post_list'),
-    path('rest/post/<pk>', views.rest_post_detail, name='rest_post_detail')
+    path('rest/post/<pk>/', views.rest_post_detail, name='rest_post_detail')
 ]
